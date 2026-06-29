@@ -1411,7 +1411,7 @@ elif page == "Process Run Sheet":
 
             
             params= (
-                f"Dehydration Bake={bake_temp}C/{bake_time}min,"
+                f"Dehydration Bake={dehydration_temp}C/{dehydration_time}min,"
                 f"Vacuum Prime={vacuum_prime}min,"
                 f"Room Temp={room_temp}C,"
                 f"RH={humidity}%,"
