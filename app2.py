@@ -1780,7 +1780,7 @@ elif page == "Process Run Sheet":
            "PECVD deposition quality check"
            ],
  
-           "PLG Level II - SiO2 Etching":
+           "PLG Level II for SiO2 Etching":
            [
            "Pattern alignment check",
            "Edge inspection",
@@ -1796,7 +1796,7 @@ elif page == "Process Run Sheet":
            "Rinse and dry quality check"
            ],
 
-           "PLG Level III - Metal Lift-off":
+           "PLG Level III for Metal Lift-off":
            [
            "Inspect after develop",
            "DICD inspection"
@@ -1852,7 +1852,9 @@ elif page == "Process Run Sheet":
            
            }
 
-           for i, point in enumerate(inspection_database[process]):
+           for i, point in enumerate(
+               inspection_database.get(process, [])
+           ):
 
                key = f"inspect_{process}_{i}"
 
