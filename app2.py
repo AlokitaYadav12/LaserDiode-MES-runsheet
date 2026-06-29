@@ -1895,13 +1895,13 @@ elif page == "Process Run Sheet":
            "Wafer Cleaning":
            "Wafer surface flatness and scratch inspection",
 
-           "PLG Level I - Groove Etching":
+           "PLG Level I for Groove Etching":
            "Groove pattern geometry verification",
 
            "Groove Etching":
            "Etch depth measurement verification",
 
-           "PLG Level II - Mesa Etching":
+           "PLG Level II for Mesa Etching":
            "Mesa pattern geometry verification",
 
            "Mesa Etching":
@@ -1910,13 +1910,13 @@ elif page == "Process Run Sheet":
            "SiO2 Deposition in PECVD":
            "SiO2 thickness verification",
 
-           "PLG Level II - SiO2 Etching":
+           "PLG Level II for SiO2 Etching":
            "Pattern opening geometry verification",
 
            "SiO2 Etching":
            "Breakdown measurement on open area",
 
-           "PLG Level III - Metal Lift-off":
+           "PLG Level III for Metal Lift-off":
            "Pattern geometry verification after lift-off",
 
            "Metallization":
