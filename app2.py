@@ -566,6 +566,9 @@ if "run_saved" not in st.session_state:
 if "fabrication_completed" not in st.session_state:
     st.session_state.fabrication_completed = False
 
+if "show_inspection" not in st.session_state:
+    st.session_state.show_inspection = False
+
 # -------------------------
 # DASHBOARD
 # -------------------------
@@ -1599,8 +1602,10 @@ elif page == "Process Run Sheet":
             "Remarks"
         )
 
-        if True:
-
+        if st.button("🔍 Inspect", key="inspect_button"):
+           st.session_state.show_inspection = True
+            
+        if st.session_state.show_inspection:
            inspection_data = {}
 
            if process=="Cleaning":
@@ -2003,6 +2008,7 @@ elif page == "Process Run Sheet":
                   st.session_state.current_step += 1
 
                   st.session_state.run_saved = False
+                  st.session_state.show_inspection = False
                
                   for key in list(st.session_state.keys()):
 
