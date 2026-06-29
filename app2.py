@@ -1400,7 +1400,11 @@ elif page == "Process Run Sheet":
             ashing_time = st.number_input(
                 "Ashing Time (min)"
             )
-           
+            
+            ashing_thickness = st.number_input(
+                "Ashing Thickness (Å)"
+            )
+            
             rinse_time = st.number_input(
                 "Rinse Time (sec)"
             )
