@@ -1599,7 +1599,7 @@ elif page == "Process Run Sheet":
             "Remarks"
         )
 
-        if st.button("Inspect & Save Run Sheet", key="inspect_save"):
+        
 
            inspection_data = {}
 
@@ -1913,80 +1913,80 @@ elif page == "Process Run Sheet":
            ) 
 
            
+           if st.button("Inspect & Save Run Sheet", key="inspect_save"):
            
-           
-           for wafer_id in selected_wafers:
-
+               for wafer_id in selected_wafers:
+    
+                   cursor.execute(
+                   """
+                   INSERT INTO process_runs
+                   (
+                       wafer_id,
+                       process_name,
+                       operator_name,
+                       parameters,
+                       remarks,
+                       timestamp
+                   )
+                   VALUES(?,?,?,?,?,?)
+                   """,
+                   (
+                       wafer_id,
+                       process,
+                       operator,
+                       params,
+                       remarks,
+                       datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                   )
+                   )
+    
+               conn.commit()
+    
+               inspection_points = []
+    
+               for i, point in enumerate(inspection_database[process]):
+    
+                   if st.session_state.get(
+                      f"inspect_{process}_{i}",
+                      False
+                   ):
+                      inspection_points.append(point)
+    
+               geometry_checked = st.session_state.get(
+                   "geometry_check_"+process,
+                   False
+               )
+    
                cursor.execute(
                """
-               INSERT INTO process_runs
+               INSERT INTO inspections
                (
-                   wafer_id,
-                   process_name,
-                   operator_name,
-                   parameters,
-                   remarks,
-                   timestamp
+               wafer_id,
+               process_name,
+               inspection_point,
+               geometry_check,
+               status,
+               remarks,
+               timestamp
                )
-               VALUES(?,?,?,?,?,?)
+               VALUES(?,?,?,?,?,?,?)
                """,
                (
-                   wafer_id,
-                   process,
-                   operator,
-                   params,
-                   remarks,
-                   datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+               selected_wafers[0],
+               process,
+               str(inspection_points),
+               str(geometry_checked),
+               "Manual Inspection Completed",
+               remarks,
+               datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                )
                )
-
-           conn.commit()
-
-           inspection_points = []
-
-           for i, point in enumerate(inspection_database[process]):
-
-               if st.session_state.get(
-                  f"inspect_{process}_{i}",
-                  False
-               ):
-                  inspection_points.append(point)
-
-           geometry_checked = st.session_state.get(
-               "geometry_check_"+process,
-               False
-           )
-
-           cursor.execute(
-           """
-           INSERT INTO inspections
-           (
-           wafer_id,
-           process_name,
-           inspection_point,
-           geometry_check,
-           status,
-           remarks,
-           timestamp
-           )
-           VALUES(?,?,?,?,?,?,?)
-           """,
-           (
-           selected_wafers[0],
-           process,
-           str(inspection_points),
-           str(geometry_checked),
-           "Manual Inspection Completed",
-           remarks,
-           datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-           )
-           )
-
-           conn.commit()
-           
-           
-           st.success("Run Sheet Saved")
-           st.session_state.run_saved = True
+    
+               conn.commit()
+               
+               
+               st.success("Run Sheet Saved")
+               st.session_state.run_saved = True
 
         if st.session_state.run_saved:
 
