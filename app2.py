@@ -1599,7 +1599,7 @@ elif page == "Process Run Sheet":
             "Remarks"
         )
 
-        
+        if True:
 
            inspection_data = {}
 
