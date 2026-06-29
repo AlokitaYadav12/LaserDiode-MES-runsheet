@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS users(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     email TEXT UNIQUE,
+    role TEXT,
     login_time TEXT
 )
 """)
@@ -249,6 +250,15 @@ if not st.session_state.logged_in:
     name = st.text_input("👤 Full Name")
 
     email = st.text_input("📧 Email Address")
+    role = st.selectbox(
+    "Select Role",
+    [
+        "Scientist",
+        "Technical Officer",
+        "Technician",
+        "Operator"
+    ]
+)
 
     if st.button("Login"):
 
@@ -266,12 +276,13 @@ if not st.session_state.logged_in:
                 cursor.execute(
                     """
                     INSERT INTO users
-                    (name,email,login_time)
-                    VALUES(?,?,?)
+                    (name,email,role,login_time)
+                    VALUES(?,?,?,?)
                     """,
                     (
                         name,
                         email,
+                        role,
                         datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     )
                 )
@@ -281,6 +292,7 @@ if not st.session_state.logged_in:
             st.session_state.logged_in = True
             st.session_state.user = name
             st.session_state.email = email
+            st.session_state.role = role
 
             st.rerun()
 
@@ -514,7 +526,12 @@ st.sidebar.markdown("---")
 st.sidebar.write("👤 User")
 
 st.sidebar.write(
-st.session_state.get("user","Guest")
+    st.session_state.get("user","Guest")
+)
+
+st.sidebar.write(
+    "Role:",
+    st.session_state.get("role","")
 )
 
 
@@ -2161,6 +2178,12 @@ elif page == "Reports":
 # -------------------------
 
 elif page=="Delete Records":
+
+    if st.session_state.get("role") != "Scientist":
+        st.error(
+            "Only Scientist can access Delete Records"
+        )
+        st.stop()
 
 
     st.header("🗑 Delete MES Records")
