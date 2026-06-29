@@ -1266,10 +1266,10 @@ elif page == "Process Run Sheet":
                 "Soft Bake"
             )
 
-            exposure = st.text_input(
-                "Exposure Energy"
+            exposure_energy = st.number_input(
+                "Exposure Energy (mJ)"
             )
-
+            
             peb_temp = st.number_input(
                 "PEB Temperature (°C)"
             )
