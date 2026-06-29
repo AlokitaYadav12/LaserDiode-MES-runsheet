@@ -569,6 +569,18 @@ if "fabrication_completed" not in st.session_state:
 if "show_inspection" not in st.session_state:
     st.session_state.show_inspection = False
 
+orientation = ""
+edges = ""
+visual = ""
+etch_depth_edge = ""
+mesa_height = ""
+roughness = ""
+breakdown = ""
+breakdown_open_area = ""
+dicd = ""
+final_inspection = ""
+    
+
 # -------------------------
 # DASHBOARD
 # -------------------------
