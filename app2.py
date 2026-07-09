@@ -805,33 +805,22 @@ elif page == "Wafer Registration":
     ):
 
         try:
-
-            cursor.execute(
-                """
-                INSERT INTO wafers
-                VALUES(?,?,?,?,?)
-                """,
-                (
-                    wafer_id,
-                    material,
-                    diameter,
-                    batch_no,
-                    datetime.now().strftime(
-                        "%Y-%m-%d %H:%M:%S"
-                    )
-                )
-            )
-
-            conn.commit()
-
-            st.success(
-                "Wafer Registered"
-            )
-
-        except:
-            st.error(
-                "Wafer Already Exists"
-            )
+            data = {
+                "wafer_id": wafer_id,
+                "substrate": material,
+                "diameter": str(diameter),
+                "thickness": "",
+                "status": "Registered"
+                "batch_no": batch_no
+            }
+            
+            supabase.table("wafers").insert(data).execute()
+            
+            st.success("Wafer Registered Successfully!")
+            
+        except Exception as e:
+            st.error(f"Error: {e}")
+        
 
 # -------------------------
 # PROCESS RUN SHEET
