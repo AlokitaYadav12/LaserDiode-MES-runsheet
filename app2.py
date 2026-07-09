@@ -270,31 +270,22 @@ if not st.session_state.logged_in:
 
         if name != "" and email != "":
 
-            cursor.execute(
-                "SELECT * FROM users WHERE email=?",
-                (email,)
-            )
+            response = supabase.table("users") \
+                 .select("*") \
+                 .eq("email", email) \
+                 .execute()
+            
+            if len(response.data) == 0:
 
-            user = cursor.fetchone()
+                  supabase.table("users").insert({
 
-            if user is None:
+                      "name": name,
+                      "email": email,
+                      "role": role,
+                      "login_time": datetime.now().isoformat()
 
-                cursor.execute(
-                    """
-                    INSERT INTO users
-                    (name,email,role,login_time)
-                    VALUES(?,?,?,?)
-                    """,
-                    (
-                        name,
-                        email,
-                        role,
-                        datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                    )
-                )
-
-                conn.commit()
-
+                   }).execute()
+                
             st.session_state.logged_in = True
             st.session_state.user = name
             st.session_state.email = email
