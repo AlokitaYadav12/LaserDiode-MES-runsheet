@@ -4,6 +4,12 @@ import pandas as pd
 from datetime import datetime
 from fpdf import FPDF
 import plotly.express as px
+from supabase import create_client
+
+url = st.secrets["SUPABASE_URL"]
+key = st.secrets["SUPABASE_KEY"]
+
+supabase = create_client(url, key)
 
 # -------------------------
 # PAGE CONFIG
