@@ -810,7 +810,7 @@ elif page == "Wafer Registration":
                 "substrate": material,
                 "diameter": str(diameter),
                 "thickness": "",
-                "status": "Registered"
+                "status": "Registered",
                 "batch_no": batch_no
             }
             
