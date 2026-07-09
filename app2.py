@@ -1943,31 +1943,17 @@ elif page == "Process Run Sheet":
            
                for wafer_id in selected_wafers:
     
-                   cursor.execute(
-                   """
-                   INSERT INTO process_runs
-                   (
-                       wafer_id,
-                       process_name,
-                       operator_name,
-                       parameters,
-                       remarks,
-                       timestamp
-                   )
-                   VALUES(?,?,?,?,?,?)
-                   """,
-                   (
-                       wafer_id,
-                       process,
-                       operator,
-                       params,
-                       remarks,
-                       datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                   )
-                   )
-    
-               conn.commit()
-    
+                   data = {
+                       "wafer_id": wafer_id,
+                       "process_name": process,
+                       "operator_name": operator,
+                       "parameters": params,
+                       "remarks": remarks,
+                       "timestamp": datetime.now().isoformat()
+                   }
+                   
+                   supabase.table("process_runs").insert(data).execute()    
+                   
                inspection_points = []
     
                for i, point in enumerate(inspection_database[process]):
