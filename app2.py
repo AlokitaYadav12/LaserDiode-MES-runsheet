@@ -2019,17 +2019,17 @@ elif page == "View Data":
         
         operator = st.text_input(
             "Operator",
-            value=row["operator_name"]
+            value=row.get("operator_name") or ""
         )
         
         parameters = st.text_area(
             "Parameters",
-            value=row["parameters"]
+            value=row.get("parameters") or ""
         )
         
         remarks = st.text_area(
             "Remarks",
-            value=row["remarks"]
+            value=row.get("remarks") or ""
         )
         
         reason = st.text_input(
