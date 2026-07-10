@@ -181,7 +181,7 @@ if not st.session_state.logged_in:
     </div>
 
     """,unsafe_allow_html=True)
-    name = st.text_input("👤 Full Name")
+    name = st.text_input("👤 Name")
 
     email = st.text_input("📧 Email Address")
     role = st.selectbox(
