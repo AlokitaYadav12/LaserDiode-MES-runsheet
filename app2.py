@@ -2049,28 +2049,17 @@ elif page == "Process Run Sheet":
 elif page == "View Data":
 
     st.header("Registered Wafers")
-
-    wafer_df = pd.read_sql(
-        "SELECT * FROM wafers",
-        conn
-    )
-
-    st.dataframe(
-        wafer_df,
-        width="stretch"
-    )
+    
+    response = supabase.table("wafers").select("*").execute()
+    wafer_df = pd.DataFrame(response.data)
+    st.dataframe(wafer_df)
 
     st.header("Process History")
-
-    process_df = pd.read_sql(
-        "SELECT * FROM process_runs",
-        conn
-    )
-
-    st.dataframe(
-        process_df,
-        width="stretch"
-    )
+    
+    response = supabase.table("process_runs").select("*").execute()
+    process_df = pd.DataFrame(response.data)
+    st.dataframe(process_df)
+    
 # -------------------------
 # Reports
 # -------------------------
