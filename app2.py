@@ -809,17 +809,16 @@ elif page == "Wafer Registration":
                 "wafer_id": wafer_id,
                 "substrate": material,
                 "diameter": str(diameter),
-                "thickness": "",
                 "status": "Registered",
-                "batch_no": batch_no
+                "batch_no": batch_no,
+                 "created_at": datetime.now().isoformat()
             }
             
             supabase.table("wafers").insert(data).execute()
-            
             st.success("Wafer Registered Successfully!")
             
-        except Exception as e:
-            st.error(f"Error: {e}")
+        except Exception:
+            st.warning("⚠️ Wafer already registered!")
         
 
 # -------------------------
@@ -854,13 +853,11 @@ elif page == "Process Run Sheet":
 
     st.info(
         f"Step {st.session_state.current_step+1} / {len(process_flow)} : {process}"
-    )
-
-
-    wafers = pd.read_sql(
-        "SELECT wafer_id FROM wafers",
-        conn
-    )
+    ) 
+    
+    response = supabase.table("wafers").select("wafer_id").execute()
+    
+    wafers = pd.DataFrame(response.data)
 
     if len(wafers)==0:
 
