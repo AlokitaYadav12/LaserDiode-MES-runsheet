@@ -408,22 +408,22 @@ def generate_pdf(selected_wafer=None):
 
 
     if selected_wafer:
-
-        wafer_data = pd.read_sql(
-              """
-              SELECT * FROM wafers
-              WHERE wafer_id=?
-              """,
-              conn,
-              params=(selected_wafer,)
+        
+        response = (
+            supabase.table("wafers")
+            .select("*")
+            .eq("wafer_id", selected_wafer)
+            .execute()
         )
-
+        
     else:
-
-        wafer_data = pd.read_sql(
-              "SELECT * FROM wafers",
-               conn
+        response = (
+            supabase.table("wafers")
+            .select("*")
+            .execute()
         )
+        
+        wafer_data = pd.DataFrame(response.data)
 
     for index,row in wafer_data.iterrows():
 
@@ -467,22 +467,22 @@ def generate_pdf(selected_wafer=None):
 
 
     if selected_wafer:
-
-        process_data = pd.read_sql(
-              """
-              SELECT * FROM process_runs
-              WHERE wafer_id=?
-              """,
-              conn,
-              params=(selected_wafer,)
+        
+        response = (
+            supabase.table("process_runs")
+            .select("*")
+            .eq("wafer_id", selected_wafer)
+            .execute()
         )
-
+        
     else:
-
-         process_data = pd.read_sql(
-             "SELECT * FROM process_runs",
-             conn
-         )
+        response = (
+            supabase.table("process_runs")
+            .select("*")
+            .execute()
+        )
+        
+    process_data = pd.DataFrame(response.data)
 
     for index,row in process_data.iterrows():
 
@@ -2180,10 +2180,13 @@ elif page=="Delete Records":
 
     if delete_type=="Delete Wafer":
 
-        wafers=pd.read_sql(
-            "SELECT wafer_id FROM wafers",
-            conn
+        response = (
+            supabase.table("wafers")
+            .select("wafer_id")
+            .execute()
         )
+        
+        wafers = pd.DataFrame(response.data)
 
 
         if len(wafers)>0:
@@ -2198,19 +2201,17 @@ elif page=="Delete Records":
                 "Delete Wafer"
             ):
 
-                cursor.execute(
-                    "DELETE FROM wafers WHERE wafer_id=?",
-                    (wafer,)
-                )
+                supabase.table("wafers") \
+                    .delete() \
+                    .eq("wafer_id", wafer) \
+                    .execute()
+                
+                supabase.table("process_runs") \
+                    .delete() \
+                    .eq("wafer_id", wafer) \
+                    .execute()
 
-
-                cursor.execute(
-                    "DELETE FROM process_runs WHERE wafer_id=?",
-                    (wafer,)
-                )
-
-
-                conn.commit()
+                
 
 
                 st.success(
@@ -2221,10 +2222,13 @@ elif page=="Delete Records":
 
     else:
 
-        records=pd.read_sql(
-            "SELECT id,wafer_id,process_name FROM process_runs",
-            conn
+        response = (
+            supabase.table("process_runs")
+            .select("id,wafer_id,process_name")
+            .execute()
         )
+        
+        records = pd.DataFrame(response.data)
 
 
         if len(records)>0:
@@ -2241,13 +2245,12 @@ elif page=="Delete Records":
             ):
 
 
-                cursor.execute(
-                    "DELETE FROM process_runs WHERE id=?",
-                    (record_id,)
-                )
+                supabase.table("process_runs") \
+                    .delete() \
+                    .eq("id", record_id) \
+                    .execute()
 
 
-                conn.commit()
 
 
                 st.success(
