@@ -2055,9 +2055,9 @@ elif page == "View Data":
             
         st.subheader("Edit Information")
         
-        st.write("Edited By:", row["edited_by"])
-        st.write("Edited At:", row["edited_at"])
-        st.write("Reason:", row["edit_reason"])
+        st.write("Edited By:", row.get("edited_by", "Not edited yet"))
+        st.write("Edited At:", row.get("edited_at", "Not edited yet"))
+        st.write("Reason:", row.get("edit_reason", "Not edited yet"))
         
 # -------------------------
 # Reports
