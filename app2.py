@@ -625,17 +625,36 @@ if page == "Dashboard":
     </div>
 
     """,unsafe_allow_html=True)
-    wafer_count = cursor.execute(
-        "SELECT COUNT(*) FROM wafers"
-    ).fetchone()[0]
+    wafer_count = len(
+         supabase.table("wafers")
+         .select("wafer_id")
+         .execute()
+         .data
+    )
 
-    process_count = cursor.execute(
-        "SELECT COUNT(*) FROM process_runs"
-    ).fetchone()[0]
+    process_count = len(
+          supabase.table("process_runs")
+          .select("id")
+          .execute()
+          .data
+    )
+    
+    process_data = (
+          supabase.table("process_runs")
+          .select("operator_name")
+          .execute()
+          .data
+    )
 
-    operator_count = cursor.execute(
-        "SELECT COUNT(DISTINCT operator_name) FROM process_runs"
-    ).fetchone()[0]
+    operator_count = len(
+           set(
+                row["operator_name"]
+                for row in process_data
+                if row["operator_name"]
+           )
+    )
+
+    
 
     col1,col2,col3,col4 = st.columns(4)
 
@@ -697,12 +716,19 @@ if page == "Dashboard":
 
     st.progress(progress)
     
-    chart_data = pd.read_sql("""
-    SELECT process_name,
-    COUNT(*) as Count
-    FROM process_runs
-    GROUP BY process_name
-    """, conn)
+    processes = (
+          supabase.table("process_runs")
+          .select("process_name")
+          .execute()
+          .data
+    )
+    
+    chart_data = (
+         pd.DataFrame(processes)
+         .groupby("process_name")
+         .size()
+         .reset_index(name="Count")
+    )
 
     if len(chart_data)>0:
          fig = px.pie(
@@ -718,16 +744,15 @@ if page == "Dashboard":
     search = st.text_input("Enter Wafer ID")
 
     if search:
-         result = pd.read_sql(
-             """
-             SELECT *
-             FROM process_runs
-             WHERE wafer_id=?
-             """,
-             conn,
-             params=(search,)
-         )         
-         st.dataframe(result)
+         result = (
+             supabase.table("process_runs")
+             .select("*")
+             .eq("wafer_id", search)
+             .execute()
+         )
+        
+         st.dataframe(pd.DataFrame(result.data))
+        
 
     st.subheader("🖥 Equipment Status")
 
@@ -757,24 +782,21 @@ if page == "Dashboard":
                     f"{name}: {status}"
                 )
     st.subheader("📋 Recent Fabrication Activity")
-
-    recent = pd.read_sql("""
-    SELECT
-    wafer_id,
-    process_name,
-    operator_name,
-    parameters,
-    remarks,
-    timestamp
-    FROM process_runs
-    ORDER BY id DESC
-    LIMIT 10
-    """, conn)
-
+    
+    recent = (
+        supabase.table("process_runs")
+        .select("*")
+        .order("id", desc=True)
+        .limit(10)
+        .execute()
+    )
+    
     st.dataframe(
-        recent,
+        pd.DataFrame(recent.data),
         width="stretch"
     )
+
+   
 
 # -------------------------
 # WAFER REGISTRATION
