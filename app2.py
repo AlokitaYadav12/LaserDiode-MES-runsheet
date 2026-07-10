@@ -811,7 +811,7 @@ elif page == "Wafer Registration":
                 "diameter": str(diameter),
                 "status": "Registered",
                 "batch_no": batch_no,
-                 "created_at": datetime.now().isoformat()
+                "created_at": datetime.now().isoformat()
             }
             
             supabase.table("wafers").insert(data).execute()
