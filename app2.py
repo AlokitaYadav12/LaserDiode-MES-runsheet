@@ -1,5 +1,4 @@
 import streamlit as st
-import sqlite3
 import pandas as pd
 from datetime import datetime
 from fpdf import FPDF
@@ -81,77 +80,6 @@ color:white;
 </style>
 """,unsafe_allow_html=True)
 
-# -------------------------
-# DATABASE
-# -------------------------
-conn = sqlite3.connect(
-    "laser_mes.db",
-    check_same_thread=False
-)
-
-cursor = conn.cursor()
-
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS users(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    email TEXT UNIQUE,
-    role TEXT,
-    login_time TEXT
-)
-""")
-conn.commit()
-
-
-# WAFER TABLE
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS wafers(
-wafer_id TEXT PRIMARY KEY,
-material TEXT,
-diameter REAL,
-batch_no TEXT,
-created_at TEXT
-)
-""")
-
-# PROCESS TABLE
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS process_runs(
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-wafer_id TEXT,
-process_name TEXT,
-operator_name TEXT,
-parameters TEXT,
-remarks TEXT,
-timestamp TEXT
-)
-""")
-
-conn.commit()
-
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS inspections(
-
-id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-wafer_id TEXT,
-
-process_name TEXT,
-
-inspection_point TEXT,
-
-geometry_check TEXT,
-
-status TEXT,
-
-remarks TEXT,
-
-timestamp TEXT
-
-)
-""")
-
-conn.commit()
 
 # -------------------------
 # LOGIN
@@ -423,7 +351,7 @@ def generate_pdf(selected_wafer=None):
             .execute()
         )
         
-        wafer_data = pd.DataFrame(response.data)
+    wafer_data = pd.DataFrame(response.data)
 
     for index,row in wafer_data.iterrows():
 
@@ -829,8 +757,8 @@ elif page == "Wafer Registration":
         try:
             data = {
                 "wafer_id": wafer_id,
-                "substrate": material,
-                "diameter": str(diameter),
+                "material": material,
+                "diameter": diameter,
                 "status": "Registered",
                 "batch_no": batch_no,
                 "created_at": datetime.now().isoformat()
@@ -839,8 +767,11 @@ elif page == "Wafer Registration":
             supabase.table("wafers").insert(data).execute()
             st.success("Wafer Registered Successfully!")
             
-        except Exception:
-            st.warning("⚠️ Wafer already registered!")
+        except Exception as e:
+            if "duplicate key" in str(e).lower():
+                st.warning("⚠️ Wafer already registered!")
+            else:
+                st.error(str(e))
         
 
 # -------------------------
@@ -1988,32 +1919,17 @@ elif page == "Process Run Sheet":
                    False
                )
     
-               cursor.execute(
-               """
-               INSERT INTO inspections
-               (
-               wafer_id,
-               process_name,
-               inspection_point,
-               geometry_check,
-               status,
-               remarks,
-               timestamp
-               )
-               VALUES(?,?,?,?,?,?,?)
-               """,
-               (
-               selected_wafers[0],
-               process,
-               str(inspection_points),
-               str(geometry_checked),
-               "Manual Inspection Completed",
-               remarks,
-               datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-               )
-               )
-    
-               conn.commit()
+               inspection = {
+                   "wafer_id": selected_wafers[0],
+                   "process_name": process,
+                   "inspection_point": str(inspection_points),
+                   "geometry_check": str(geometry_checked),
+                   "status": "Manual Inspection Completed",
+                   "remarks": remarks,
+                   "timestamp": datetime.now().isoformat()
+               }
+               
+               supabase.table("inspections").insert(inspection).execute()
                
                
                st.success("Run Sheet Saved")
@@ -2114,10 +2030,13 @@ elif page == "Reports":
 
     if report_type == "Specific Wafer":
 
-        wafer_list = pd.read_sql(
-            "SELECT wafer_id FROM wafers",
-            conn
+        response = (
+            supabase.table("wafers")
+            .select("wafer_id")
+            .execute()
         )
+        
+        wafer_list = pd.DataFrame(response.data)
 
 
         if len(wafer_list)==0:
