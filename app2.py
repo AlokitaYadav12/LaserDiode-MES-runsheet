@@ -1998,66 +1998,66 @@ elif page == "View Data":
     process_df = pd.DataFrame(response.data)
     st.dataframe(process_df)
     
-    st.header("✏️ Edit Process Run Sheet")
+    #st.header("✏️ Edit Process Run Sheet")
     
-    response = (
-        supabase.table("process_runs")
-        .select("*")
-        .execute()
-    )
+    #response = (
+     #   supabase.table("process_runs")
+      #  .select("*")
+       # .execute()
+    )#
     
-    records = pd.DataFrame(response.data)
+    #records = pd.DataFrame(response.data)
 
-    if len(records) > 0:
+    #if len(records) > 0:
 
-        selected_id = st.selectbox(
-            "Select Record ID",
-            records["id"]
-        )
+     #   selected_id = st.selectbox(
+      #      "Select Record ID",
+       #     records["id"]
+        #)
         
-        row = records[records["id"] == selected_id].iloc[0]
+        #row = records[records["id"] == selected_id].iloc[0]
         
-        operator = st.text_input(
-            "Operator",
-            value=row.get("operator_name") or ""
-        )
+        #operator = st.text_input(
+         #   "Operator",
+           # value=row.get("operator_name") or ""
+        #)
         
-        parameters = st.text_area(
-            "Parameters",
-            value=row.get("parameters") or ""
-        )
+        #parameters = st.text_area(
+         #   "Parameters",
+          #  value=row.get("parameters") or ""
+        #)
         
-        remarks = st.text_area(
-            "Remarks",
-            value=row.get("remarks") or ""
-        )
+        #remarks = st.text_area(
+         #   "Remarks",
+          #  value=row.get("remarks") or ""
+        #)
         
-        reason = st.text_input(
-            "Reason for Edit"
-        )
+        #reason = st.text_input(
+         #   "Reason for Edit"
+        #)
 
-        if st.button("Update Run Sheet"):
+        #if st.button("Update Run Sheet"):
 
-            supabase.table("process_runs")\
-                .update({
-                    "operator_name": operator,
-                    "parameters": parameters,
-                    "remarks": remarks,
-                    "edited_by": st.session_state["user"],
-                    "edited_at": datetime.now().isoformat(),
-                    "edit_reason": reason
-                })\
-                .eq("id", selected_id)\
-                .execute()
+         #   supabase.table("process_runs")\
+          #      .update({
+           #         "operator_name": operator,
+            #        "parameters": parameters,
+             #       "remarks": remarks,
+              #      "edited_by": st.session_state["user"],
+               #     "edited_at": datetime.now().isoformat(),
+                #    "edit_reason": reason
+                #})\
+                #.eq("id", selected_id)\
+                #.execute()
             
-            st.success("Run sheet updated successfully.")
+           # st.success("Run sheet updated successfully.")
             
             
-        st.subheader("Edit Information")
+        #st.subheader("Edit Information")
         
-        st.write("Edited By:", row.get("edited_by", "Not edited yet"))
-        st.write("Edited At:", row.get("edited_at", "Not edited yet"))
-        st.write("Reason:", row.get("edit_reason", "Not edited yet"))
+        #st.write("Edited By:", row.get("edited_by", "Not edited yet"))
+        #st.write("Edited At:", row.get("edited_at", "Not edited yet"))
+        #st.write("Reason:", row.get("edit_reason", "Not edited yet"))
         
 # -------------------------
 # Reports
