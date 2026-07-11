@@ -2004,7 +2004,7 @@ elif page == "View Data":
      #   supabase.table("process_runs")
       #  .select("*")
        # .execute()
-    )#
+    #)
     
     #records = pd.DataFrame(response.data)
 
