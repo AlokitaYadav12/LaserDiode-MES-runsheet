@@ -93,24 +93,34 @@ h1,h
 
 </style>
 """, unsafe_allow_html=True)
+
 st.markdown("""
 <style>
 
 div.stButton > button{
-
-background:#2563eb;
+background:linear-gradient(135deg,#2563EB,#3B82F6);
 color:white;
-border-radius:10px;
 border:none;
-
+border-radius:12px;
+padding:0.6rem 1.3rem;
+font-weight:600;
+font-size:15px;
+box-shadow:0 8px 20px rgba(37,99,235,.25);
+transition:all .25s ease;
 }
 
 div.stButton > button:hover{
-
-background:#1d4ed8;
+transform:translateY(-2px);
+background:linear-gradient(135deg,#1D4ED8,#2563EB);
+box-shadow:0 12px 24px rgba(37,99,235,.35);
 color:white;
-
 }
+
+div.stButton > button:focus{
+border:none;
+outline:none;
+}
+
 
 </style>
 """,unsafe_allow_html=True)
