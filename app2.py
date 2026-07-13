@@ -26,23 +26,34 @@ st.markdown("""
 <style>
 
 .stApp{
-    background: linear-gradient(
-    135deg,
-    #EEF4FF,
-    #DDEAF7,
-    #F8FAFC
+    background: 
+    linear-gradient(
+    180deg,
+    #F8FAFC 0%,
+    #F1F5F9 45%,
+    #E2E8F0 100%
     );
+    font-family:'Segoe UI',sans-serif;
 }
 
 [data-testid="stSidebar"]{
-    background:#0F172A;
+    background:
+    linear-gradient(
+    180deg,
+    #0F172A,
+    #1E293B
+    );
+    
+    border-right:1px solid #334155;
 }
 
 [data-testid="stSidebar"] *{
     color:white;
+    font-size:16px;
 }
 
-h1,h2,h3{
+h1,h
+2,h3{
     color:#003366;
     font-weight:bold;
 }
@@ -54,6 +65,33 @@ h1,h2,h3{
 
 .stDataFrame{
     border-radius:10px;
+}
+
+.metric-card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0px 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.metric-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0px 15px 35px rgba(0,0,0,0.15);
+}
+
+.metric-title{
+    color:#475569;
+    font-size:18px;
+    font-weight:600;
+}
+
+.metric-value{
+    color:#0F172A;
+    font-size:38px;
+    font-weight:800;
+    margin-top:10px;
 }
 
 </style>
@@ -97,27 +135,21 @@ if not st.session_state.logged_in:
     <style>
 
     .loginbox{
-
-    max-width:600px;
-    margin:auto;
-    margin-top:80px;
-
-    padding:45px;
-
-    border-radius:25px;
-
-    background:
-    linear-gradient(
-    135deg,
-    #020617,
-    #1E3A8A,
-    #0369A1
-    );
-
-    text-align:center;
-
-    box-shadow:
-    0px 15px 50px rgba(0,0,0,0.5);
+        max-width:600px;
+        margin:auto;
+        margin-top:60px;
+        padding:50px;
+        border-radius:25px;
+        
+        background:rgba(255,255,255,0.15);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        
+         border:1px solid rgba(255,255,255,0.25);
+         
+         box-shadow:0px 20px 60px rgba(0,0,0,0.25);
+         
+         text-align:center;
 
     }
 
@@ -596,14 +628,9 @@ if page == "Dashboard":
     for col,(title,val,color) in zip([col1,col2,col3,col4],cards):
          with col:
              st.markdown(f"""
-             <div style="
-             background:{color};
-             padding:20px;
-             border-radius:15px;
-             text-align:center;
-             color:white;">
-             <h4>{title}</h4>
-             <h1>{val}</h1>
+             <div class="metric-card" style="border-left:6px solid {color};">
+             <div class="metric-title">{title}</div>
+             <div class="metric-value">{val}</div>
              </div>
              """, unsafe_allow_html=True)
     st.info(
