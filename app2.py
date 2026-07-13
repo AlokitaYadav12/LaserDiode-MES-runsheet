@@ -63,6 +63,32 @@ h1,h
 .stDataFrame{
     border-radius:10px;
 }
+.metric-card{
+    background:white;
+    padding:22px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0px 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.metric-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0px 15px 35px rgba(0,0,0,0.15);
+}
+
+.metric-title{
+    color:#475569;
+    font-size:18px;
+    font-weight:600;
+}
+
+.metric-value{
+    color:#0F172A;
+    font-size:38px;
+    font-weight:800;
+    margin-top:10px;
+}
 
 
 
@@ -616,32 +642,9 @@ if page == "Dashboard":
     for col,(title,val,color) in zip([col1,col2,col3,col4],cards):
          with col:
              st.markdown(f"""
-              <div style="
-              background:rgba(255,255,255,0.75);
-              backdrop-filter:blur(18px);
-              -webkit-backdrop-filter:blur(18px);
-              border:1px solid rgba(255,255,255,.35);
-              border-radius:22px;
-              padding:28px;
-              box-shadow:0 10px 30px rgba(15,23,42,.08);
-              ">
-              
-              <p style="
-              color:#64748B;
-              font-size:15px;
-              margin-bottom:8px;
-              font-weight:600;">
-              {title}
-              </p>
-              
-              <h1 style="
-              color:#0F172A;
-              font-size:42px;
-              font-weight:700;
-              margin:0;">
-              {val}
-              </h1>
-
+               <div class="metric-card" style="border-left:6px solid {color};">
+               <div class="metric-title">{title}</div>
+               <div class="metric-value">{val}</div>
              </div>
              """, unsafe_allow_html=True)
     st.info(
