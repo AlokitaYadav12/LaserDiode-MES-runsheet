@@ -64,31 +64,32 @@ h1,h
     border-radius:10px;
 }
 
-.metric-card{
-    background:white;
-    padding:22px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0px 10px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
+
+
+/* ---------- Premium Input Fields ---------- */
+
+.stTextInput input,
+.stTextArea textarea,
+.stNumberInput input,
+.stSelectbox div[data-baseweb="select"] > div{
+    border-radius:12px !important;
+    border:1px solid #CBD5E1 !important;
+    background:#FFFFFF !important;
+    color:#0F172A !important;
+    box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    transition:all .25s ease;
 }
 
-.metric-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0px 15px 35px rgba(0,0,0,0.15);
+.stTextInput input:focus,
+.stTextArea textarea:focus,
+.stNumberInput input:focus{
+    border:1px solid #2563EB !important;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
 }
 
-.metric-title{
-    color:#475569;
-    font-size:18px;
-    font-weight:600;
-}
-
-.metric-value{
-    color:#0F172A;
-    font-size:38px;
-    font-weight:800;
-    margin-top:10px;
+label{
+    font-weight:600 !important;
+    color:#334155 !important;
 }
 
 </style>
@@ -615,9 +616,32 @@ if page == "Dashboard":
     for col,(title,val,color) in zip([col1,col2,col3,col4],cards):
          with col:
              st.markdown(f"""
-             <div class="metric-card" style="border-left:6px solid {color};">
-             <div class="metric-title">{title}</div>
-             <div class="metric-value">{val}</div>
+              <div style="
+              background:rgba(255,255,255,0.75);
+              backdrop-filter:blur(18px);
+              -webkit-backdrop-filter:blur(18px);
+              border:1px solid rgba(255,255,255,.35);
+              border-radius:22px;
+              padding:28px;
+              box-shadow:0 10px 30px rgba(15,23,42,.08);
+              ">
+              
+              <p style="
+              color:#64748B;
+              font-size:15px;
+              margin-bottom:8px;
+              font-weight:600;">
+              {title}
+              </p>
+              
+              <h1 style="
+              color:#0F172A;
+              font-size:42px;
+              font-weight:700;
+              margin:0;">
+              {val}
+              </h1>
+
              </div>
              """, unsafe_allow_html=True)
     st.info(
