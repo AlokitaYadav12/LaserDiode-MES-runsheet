@@ -38,10 +38,10 @@ st.markdown("""
     linear-gradient(
     180deg,
     #0F172A,
-    #1E293B
+    #1E293B,
+    #334155
     );
-    
-    border-right:1px solid #334155;
+    border-right:1px solid rgba(255,255,255,.08);
 }
 
 [data-testid="stSidebar"] *{
