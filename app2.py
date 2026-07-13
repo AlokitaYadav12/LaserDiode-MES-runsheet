@@ -2051,6 +2051,7 @@ elif page == "View Data":
                 .execute()
             
             st.success("Run sheet updated successfully.")
+            st.rerun()
             
             
         st.subheader("Edit Information")
