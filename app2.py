@@ -27,13 +27,10 @@ st.markdown("""
 
 .stApp{
     background: 
-    linear-gradient(
-    180deg,
-    #F8FAFC 0%,
-    #F1F5F9 45%,
-    #E2E8F0 100%
-    );
-    font-family:'Segoe UI',sans-serif;
+    radial-gradient(circle at top left,#E0F2FE 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#DBEAFE 0%,transparent 35%),
+    linear-gradient(135deg,#F8FAFC,#EEF6FF,#F1F5F9);
+    background-attachment:fixed;
 }
 
 [data-testid="stSidebar"]{
