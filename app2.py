@@ -2006,16 +2006,20 @@ elif page == "View Data":
         .execute()
     )
     
-    records = pd.DataFrame(response.data)
+    records = pd.DataFrame(response.data or [])
 
-    if len(records) > 0:
+    if not records.empty:
 
         selected_id = st.selectbox(
             "Select Record ID",
             records["id"]
         )
         
-        row = records[records["id"] == selected_id].iloc[0]
+        selected_row = records.loc[records["id"] == selected_id]
+        if selected_row.empty:
+             st.warning("Record not found.")
+             st.stop()
+        row = selected_row.iloc[0]
         
         operator = st.text_input(
             "Operator",
