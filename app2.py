@@ -142,53 +142,37 @@ if not st.session_state.logged_in:
     <style>
 
     .loginbox{
-        max-width:600px;
-        margin:auto;
-        margin-top:60px;
-        padding:50px;
-        border-radius:25px;
-        
-        background:rgba(255,255,255,0.15);
-        backdrop-filter:blur(18px);
-        -webkit-backdrop-filter:blur(18px);
-        
-         border:1px solid rgba(255,255,255,0.25);
-         
-         box-shadow:0px 20px 60px rgba(0,0,0,0.25);
-         
-         text-align:center;
-
+        max-width:650px;
+        margin:70px auto;
+        padding:45px;
+        border-radius:28px;
+        background:rgba(255,255,255,0.65);
+        backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);
+        border:1px solid rgba(255,255,255,.35);
+        box-shadow:0 20px 50px rgba(0,0,0,.12);
+        text-align:center;
     }
-
-
+    
     .loginbox h1{
-
-    color:white;
-
-    font-size:48px;
-
-    font-weight:900;
-
-    letter-spacing:2px;
-
+        font-size:44px;
+        font-weight:800;
+        color:#0F172A;
+        margin-bottom:10px;
     }
-
-
+    
     .loginbox h3{
-
-    color:#BAE6FD;
-
-    font-size:25px;
-
+        font-size:22px;
+        font-weight:600;
+        color:#2563EB;
+        margin-bottom:15px;
     }
-
-
+    
     .loginbox p{
-
-    color:white;
-
-    font-size:20px;
-
+        font-size:17px;
+        color:#475569;
+        line-height:1.6;
+        margin-bottom:8px;
     }
 
 
@@ -200,20 +184,16 @@ if not st.session_state.logged_in:
     st.markdown("""
     <div class="loginbox">
 
-    <h1>
-    🔬 LASER DIODE MES
-    </h1>
+    <h1> 🔬 LASER DIODE MES </h1>
 
-    <h3>
-    Manufacturing Execution System
-    </h3>
+    <h3> Manufacturing Execution System </h3>
 
-    <p>
-    AI Based Fabrication Monitoring & Inspection
-    </p>
-
-    <p>
-    🔐 Please Login
+    <p> Real-Time Fabrication Monitoring </p>
+    
+    <br>
+    
+    <p style="font-size:18px;font-weight:600;">
+    🔐 Sign in to continue
     </p>
 
 
