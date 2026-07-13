@@ -2016,6 +2016,7 @@ elif page == "View Data":
         )
         
         selected_row = records.loc[records["id"] == selected_id]
+        
         if selected_row.empty:
              st.warning("Record not found.")
              st.stop()
@@ -2023,17 +2024,17 @@ elif page == "View Data":
         
         operator = st.text_input(
             "Operator",
-            value=row.get("operator_name") or ""
+            value=str(row.get("operator_name") or "")
         )
         
         parameters = st.text_area(
             "Parameters",
-            value=row.get("parameters") or ""
+            value=str(row.get("parameters") or "")
         )
         
         remarks = st.text_area(
             "Remarks",
-            value=row.get("remarks") or ""
+            value=str(row.get("remarks") or "")
         )
         
         reason = st.text_input(
@@ -2055,8 +2056,15 @@ elif page == "View Data":
                 .execute()
             
             st.success("Run sheet updated successfully.")
-            st.rerun()
             
+            response = (
+                supabase.table("process_runs")
+                .select("*")
+                .eq("id", selected_id)
+                .execute()
+            )
+            
+            row = response.data[0]
             
         st.subheader("Edit Information")
         
