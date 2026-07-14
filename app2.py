@@ -277,10 +277,13 @@ if not st.session_state.logged_in:
     }
     
     .login-subtitle{
-        color:#CBD5E1;
-
-        font-size:64px;
-        margin:0;
+        color:#FFFFFF;
+        font-size:22px;
+        font-weight:700;
+        letter-spacing:0.5px;
+        margin-top:12px;
+        margin-bottom:8px;
+        text-transform:uppercase;
     }
 
 
