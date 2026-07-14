@@ -115,6 +115,14 @@ overflow:hidden;
 box-shadow:0px 8px 25px rgba(0,0,0,.08);
 }
 
+div[data-testid="stPlotlyChart"]{
+    background:white;
+    border-radius:20px;
+    padding:15px;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.08);
+    margin-top:15px;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
