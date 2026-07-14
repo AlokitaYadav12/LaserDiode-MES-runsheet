@@ -123,6 +123,10 @@ div[data-testid="stPlotlyChart"]{
     margin-top:15px;
 }
 
+.block-container{
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -174,27 +178,23 @@ if not st.session_state.logged_in:
     <style>
 
     .loginbox{
-        max-width:620px;
-
+        width:520px;
         margin:auto;
+        margin-top:4vh;
+        padding:40px 45px;
+        border-radius:28px;
 
-        margin-top:25px;
-
-        padding:45px;
-
-        background:rgba(8,20,40,.78);
-
+        background:rgba(255,255,255,0.72);
         backdrop-filter:blur(20px);
+        -webkit-backdrop-filter:blur(20px);
 
-        border-radius:25px;
-
-        border:1px solid rgba(255,255,255,.15);
+        border:1px solid rgba(255,255,255,.5);
 
         box-shadow:
-        0 15px 45px rgba(0,0,0,.55);
+        0 25px 60px rgba(15,23,42,.12),
+        0 8px 20px rgba(37,99,235,.08);
 
         text-align:center;
-
     }
     
     .loginbox h1{
