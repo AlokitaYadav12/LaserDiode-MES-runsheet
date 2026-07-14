@@ -242,20 +242,21 @@ if not st.session_state.logged_in:
     
     st.markdown("""
     <div class="loginbox">
-
+    <div style="font-size:72px;margin-bottom:10px;">🔬</div>
     <h1> 🔬 LASER DIODE MES </h1>
 
-    <h3> Manufacturing Execution System </h3>
+    <h3>Manufacturing Execution System</h3>
 
-    
-    <br>
-    
-    <p style="font-size:18px;font-weight:600;">
-    🔐 Sign in to continue
+    <p class="login-subtitle">
+        🔐 Sign in to continue
     </p>
 
-
     </div>
+
+    
+
+    
+   
 
     """,unsafe_allow_html=True)
     name = st.text_input("👤 Name")
