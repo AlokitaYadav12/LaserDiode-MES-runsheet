@@ -221,9 +221,9 @@ if not st.session_state.logged_in:
 
     .stApp{
         background:
-        radial-gradient(circle at top,#3B82F6 0%,transparent 22%),
-        radial-gradient(circle at bottom,#1D4ED8 0%,transparent 25%),
-        linear-gradient(180deg,#020617,#0F172A,#111827);
+        radial-gradient(circle at top,#60A5FA 0%,transparent 30%),
+        radial-gradient(circle at bottom,#93C5FD 0%,transparent 35%),
+        linear-gradient(135deg,#1E3A8A,#334155,#475569);
     }
 
     </style>
