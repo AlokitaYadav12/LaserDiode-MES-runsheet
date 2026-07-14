@@ -190,8 +190,13 @@ if not st.session_state.logged_in:
     st.markdown(
     """
     <style>
+    /* Hide Streamlit header spacing */
+    header{
+       visibility:hidden;
+    }
+    
     .block-container{
-        padding-top:0.5rem;
+        padding-top:0.2rem;
         padding-bottom:1rem;
     }
     </style>
@@ -208,6 +213,10 @@ if not st.session_state.logged_in:
 
     </style>
     """,unsafe_allow_html=True)
+
+    
+
+
 
     st.markdown("""
     <style>
@@ -237,14 +246,15 @@ if not st.session_state.logged_in:
 
         font-weight:800;
 
-        color:#0F172A;
+        color:white;
 
         letter-spacing:1px;
         margin-bottom:4px;
+        white-space:nowrap;
     }
     
     .loginbox h3{
-        color:#2563EB;
+        color:#60A5FA;
 
         font-size:20px;
         font-weight:600;
@@ -253,7 +263,7 @@ if not st.session_state.logged_in:
     }
     
     .login-subtitle{
-        color:#64748B;
+        color:#CBD5E1;
 
         font-size:17px;
         margin:0;
@@ -266,8 +276,26 @@ if not st.session_state.logged_in:
     
     st.markdown("""
     <div class="loginbox">
-    <div style="font-size:28px;margin-bottom:8px;"></div>
-    <h1> 🔬 LASER DIODE MES </h1>
+
+    <div style="
+    width:75px;
+    height:75px;
+    margin:auto;
+    margin-bottom:20px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#2563EB,#60A5FA);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:38px;
+    box-shadow:0 10px 30px rgba(37,99,235,.4);
+    ">
+
+    🔬
+
+    </div>
+
+    <h1> LASER DIODE MES </h1>
 
     <h3>Manufacturing Execution System</h3>
 
