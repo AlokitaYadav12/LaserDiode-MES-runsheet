@@ -124,8 +124,22 @@ div[data-testid="stPlotlyChart"]{
 }
 
 .block-container{
-    padding-top:1rem;
+    padding-top:0.5rem;
     padding-bottom:1rem;
+}
+
+.login-page{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+    radial-gradient(circle at top,#3B82F6 0%,transparent 30%),
+    radial-gradient(circle at bottom,#60A5FA 0%,transparent 30%),
+    linear-gradient(135deg,#EEF6FF,#DCEEFF,#F8FAFC);
+
+    border-radius:25px;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -224,6 +238,14 @@ if not st.session_state.logged_in:
 
     </style>
     """,unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="login-page">
+        <div class="loginbox">
+            ...
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 
 
