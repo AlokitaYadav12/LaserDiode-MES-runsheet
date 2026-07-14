@@ -277,25 +277,9 @@ if not st.session_state.logged_in:
     st.markdown("""
     <div class="loginbox">
 
-    <div style="
-    width:75px;
-    height:75px;
-    margin:auto;
-    margin-bottom:20px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#2563EB,#60A5FA);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:38px;
-    box-shadow:0 10px 30px rgba(37,99,235,.4);
-    ">
+  
 
-    🔬
-
-    </div>
-
-    <h1> LASER DIODE MES </h1>
+    <h1> 🔬 LASER DIODE MES </h1>
 
     <p class="login-subtitle">
         🔐 Log in to continue
