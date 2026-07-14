@@ -78,57 +78,6 @@ h1,h2,h3{
     font-weight:bold;
 }
 
-/* ---------- INPUTS ---------- */
-
-.stTextInput input,
-.stTextArea textarea,
-.stNumberInput input,
-.stSelectbox div[data-baseweb="select"] > div{
-
-    background:white !important;
-    color:#111827 !important;
-
-    border:1px solid #D1D5DB !important;
-    border-radius:12px !important;
-
-}
-
-.stTextInput input:focus,
-.stTextArea textarea:focus,
-.stNumberInput input:focus{
-
-    border:1px solid #2563EB !important;
-    box-shadow:0 0 0 3px rgba(37,99,235,.15);
-
-}
-
-/* ---------- BUTTON ---------- */
-
-div.stButton>button{
-
-    width:100%;
-
-    height:48px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#2563EB;
-
-    color:white;
-
-    font-weight:600;
-
-    transition:.25s;
-
-}
-
-div.stButton>button:hover{
-
-    background:#1D4ED8;
-
-}
 
 /* ---------- METRIC CARD ---------- */
 
@@ -172,6 +121,31 @@ div.stButton>button:hover{
 
     margin-top:10px;
 
+}
+/* ---------- Premium Input Fields ---------- */
+
+.stTextInput input,
+.stTextArea textarea,
+.stNumberInput input,
+.stSelectbox div[data-baseweb="select"] > div{
+    border-radius:12px !important;
+    border:1px solid #CBD5E1 !important;
+    background:#FFFFFF !important;
+    color:#0F172A !important;
+    box-shadow:0 2px 8px rgba(0,0,0,0.04);
+    transition:all .25s ease;
+}
+
+.stTextInput input:focus,
+.stTextArea textarea:focus,
+.stNumberInput input:focus{
+    border:1px solid #2563EB !important;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+}
+
+label{
+    font-weight:600 !important;
+    color:#334155 !important;
 }
 
 
