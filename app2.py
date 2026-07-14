@@ -187,22 +187,32 @@ if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
 if not st.session_state.logged_in:
+    st.markdown(
+    """
+    <style>
+    .block-container{
+        padding-top:1rem;
+        padding-bottom:1rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True)
 
     st.markdown("""
     <style>
 
     .loginbox{
-        width:520px;
+        width:420px;
         margin:auto;
         margin-top:4vh;
-        padding:40px 45px;
+        padding:35px 40px;
         border-radius:28px;
 
-        background:rgba(255,255,255,0.72);
-        backdrop-filter:blur(20px);
-        -webkit-backdrop-filter:blur(20px);
+        background:rgba(255,255,255,0.65);
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
 
-        border:1px solid rgba(255,255,255,.5);
+        border:1px solid rgba(255,255,255,.45);
 
         box-shadow:
         0 25px 60px rgba(15,23,42,.12),
@@ -212,27 +222,30 @@ if not st.session_state.logged_in:
     }
     
     .loginbox h1{
-        font-size:48px;
+        font-size:32px;
 
         font-weight:800;
 
-        color:white;
+        color:#0F172A;
 
         letter-spacing:1px;
+        margin-bottom:6px;
     }
     
     .loginbox h3{
-        color:#60A5FA;
+        color:#2563EB;
 
-        font-size:24px;
+        font-size:21px;
+        font-weight:600;
 
-        margin-top:8px;
+        margin-bottom:14px;
     }
     
-    .loginbox p{
-        color:#CBD5E1;
+    .login-subtitle{
+        color:#64748B;
 
-        font-size:18px;
+        font-size:17px;
+        margin:0;
     }
 
 
@@ -248,7 +261,7 @@ if not st.session_state.logged_in:
     <h3>Manufacturing Execution System</h3>
 
     <p class="login-subtitle">
-        🔐 Sign in to continue
+        🔐 Log in to continue
     </p>
 
     </div>
