@@ -45,127 +45,123 @@ visibility:hidden;
 st.markdown("""
 <style>
 
-.stApp{
-    background: 
-    linear-gradient(
-    135deg,
-    #020617 0%,
-    #0F172A 45%,
-    #1E3A8A 100%
-    );
+/* ---------- APP ---------- */
 
-    background-attachment:fixed;
+.stApp{
+    background:#F4F7FB;
 }
 
+/* ---------- SIDEBAR ---------- */
+
 [data-testid="stSidebar"]{
-    background:
-    linear-gradient(
-    180deg,
-    #0F172A,
-    #1E293B,
-    #334155
-    );
-    border-right:1px solid rgba(255,255,255,.08);
+    background:#0F172A;
+    border-right:1px solid #1E293B;
 }
 
 [data-testid="stSidebar"] *{
     color:white;
-    font-size:16px;
 }
 
-h1,h
-2,h3{
-    color:#003366;
-    font-weight:bold;
+/* ---------- HEADINGS ---------- */
+
+h1,h2,h3{
+    color:#0F172A;
+    font-weight:700;
 }
 
-[data-testid="stMetricValue"]{
-    font-size:30px;
-    font-weight:bold;
+/* ---------- INPUTS ---------- */
+
+.stTextInput input,
+.stTextArea textarea,
+.stNumberInput input,
+.stSelectbox div[data-baseweb="select"] > div{
+
+    background:white !important;
+    color:#111827 !important;
+
+    border:1px solid #D1D5DB !important;
+    border-radius:12px !important;
+
 }
 
-.stDataFrame{
-    border-radius:10px;
+.stTextInput input:focus,
+.stTextArea textarea:focus,
+.stNumberInput input:focus{
+
+    border:1px solid #2563EB !important;
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
 }
+
+/* ---------- BUTTON ---------- */
+
+div.stButton>button{
+
+    width:100%;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563EB;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+div.stButton>button:hover{
+
+    background:#1D4ED8;
+
+}
+
+/* ---------- METRIC CARD ---------- */
+
 .metric-card{
+
     background:white;
-    padding:22px;
+
     border-radius:18px;
-    text-align:center;
-    box-shadow:0px 10px 25px rgba(0,0,0,0.08);
-    transition:0.3s;
+
+    padding:22px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
+    transition:.25s;
+
 }
 
 .metric-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0px 15px 35px rgba(0,0,0,0.15);
+
+    transform:translateY(-4px);
+
 }
 
 .metric-title{
-    color:#475569;
-    font-size:18px;
+
+    color:#64748B;
+
+    font-size:16px;
+
     font-weight:600;
+
 }
 
 .metric-value{
+
     color:#0F172A;
-    font-size:38px;
+
+    font-size:36px;
+
     font-weight:800;
+
     margin-top:10px;
-}
-
-
-
-.stTextInput input{
-    background:#0F172A;
-    color:white;
-    border:1px solid #334155;
-    border-radius:12px;
-    height:48px;
-}
-
-.stSelectbox div[data-baseweb="select"] > div{
-    background:#0F172A;
-    color:white;
-    border:1px solid #334155;
-    border-radius:12px;
-}
-
-label{
-    color:#E2E8F0 !important;
-    font-weight:600 !important;
-}
-div.stButton > button{
-
-background:linear-gradient(
-90deg,
-#2563EB,
-#3B82F6
-);
-
-color:white;
-
-height:50px;
-
-border-radius:12px;
-
-font-size:18px;
-
-font-weight:bold;
-
-border:none;
-
-width:100%;
-
-transition:.3s;
-
-}
-
-div.stButton > button:hover{
-
-transform:translateY(-2px);
-
-box-shadow:0 8px 25px rgba(37,99,235,.45);
 
 }
 
