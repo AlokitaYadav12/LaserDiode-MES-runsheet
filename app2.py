@@ -129,7 +129,7 @@ div[data-testid="stPlotlyChart"]{
 }
 
 .login-page{
-    min-height:90vh;
+    min-height:auto;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -256,7 +256,6 @@ if not st.session_state.logged_in:
 
     <h3> Manufacturing Execution System </h3>
 
-    <p> Real-Time Fabrication Monitoring </p>
     
     <br>
     
