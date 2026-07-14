@@ -589,11 +589,12 @@ if page == "Dashboard":
 
     <div style="
     background:linear-gradient(90deg,#001F54,#034078,#1282A2);
-    padding:30px;
+    padding:28px;
     border-radius:20px;
     color:white;
     text-align:center;
     ">
+    <h1 style="font-size:36px;">
 
     <h1>
     👋 Welcome {st.session_state.get("user","Operator")}
@@ -661,7 +662,14 @@ if page == "Dashboard":
     st.info(
         f"Current Manufacturing Step: {process_flow[st.session_state.current_step]}"
     )
-    st.subheader("🏭 Fabrication Workflow")
+    st.markdown("""
+    <h2 style="
+    color:#1E3A8A;
+    font-weight:700;
+    margin-bottom:15px;">
+    🏭 Fabrication Workflow
+    </h2>
+    """, unsafe_allow_html=True)
 
     workflow_display = []
 
@@ -717,7 +725,19 @@ if page == "Dashboard":
              names="process_name",
              title="Fabrication Process Distribution"
          )
-         st.plotly_chart(fig, width="stretch")
+         st.markdown("""
+         <div style="
+         background:white;
+         padding:20px;
+         border-radius:20px;
+         box-shadow:0px 8px 25px rgba(0,0,0,.08);
+         margin-top:15px;
+         ">
+         """, unsafe_allow_html=True)
+
+st.plotly_chart(fig, use_container_width=True)
+
+st.markdown("</div>", unsafe_allow_html=True)
 
     st.subheader("🔍 Wafer Search")
 
