@@ -191,28 +191,39 @@ if not st.session_state.logged_in:
     """
     <style>
     .block-container{
-        padding-top:1rem;
+        padding-top:0.5rem;
         padding-bottom:1rem;
     }
     </style>
     """,
     unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+
+    .stApp{
+        background:
+        radial-gradient(circle at top,#2563EB 0%,transparent 35%),
+        linear-gradient(135deg,#0F172A,#111827,#1E293B);
+    }
+
+    </style>
+    """,unsafe_allow_html=True)
 
     st.markdown("""
     <style>
 
     .loginbox{
         width:420px;
-        margin:auto;
+        margin:35px auto 20px;
         margin-top:4vh;
         padding:25px 30px;
-        border-radius:28px;
+        border-radius:24px;
 
-        background:rgba(255,255,255,0.65);
+        background:rgba(25,35,55,0.78);
         backdrop-filter:blur(18px);
         -webkit-backdrop-filter:blur(18px);
 
-        border:1px solid rgba(255,255,255,.45);
+        border:1px solid rgba(255,255,255,.12);
 
         box-shadow:
         0 25px 60px rgba(15,23,42,.12),
