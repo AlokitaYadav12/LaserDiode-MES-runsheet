@@ -17,6 +17,26 @@ st.set_page_config(
     page_title="Laser Diode MES",
     layout="wide"
 )
+st.markdown("""
+<style>
+
+.block-container{
+    max-width:700px;
+    padding-top:1rem;
+    padding-bottom:0rem;
+    margin:auto;
+}
+
+header{
+visibility:hidden;
+}
+
+footer{
+visibility:hidden;
+}
+
+</style>
+""",unsafe_allow_html=True)
 
 # -------------------------
 # CUSTOM CSS
@@ -27,9 +47,13 @@ st.markdown("""
 
 .stApp{
     background: 
-    radial-gradient(circle at top left,#E0F2FE 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#DBEAFE 0%,transparent 35%),
-    linear-gradient(135deg,#F8FAFC,#EEF6FF,#F1F5F9);
+    linear-gradient(
+    135deg,
+    #020617 0%,
+    #0F172A 45%,
+    #1E3A8A 100%
+    );
+
     background-attachment:fixed;
 }
 
@@ -92,31 +116,59 @@ h1,h
 
 
 
-/* ---------- Premium Input Fields ---------- */
-
-.stTextInput input,
-.stTextArea textarea,
-.stNumberInput input,
-.stSelectbox div[data-baseweb="select"] > div{
-    border-radius:12px !important;
-    border:1px solid #CBD5E1 !important;
-    background:#FFFFFF !important;
-    color:#0F172A !important;
-    box-shadow:0 2px 8px rgba(0,0,0,0.04);
-    transition:all .25s ease;
+.stTextInput input{
+    background:#0F172A;
+    color:white;
+    border:1px solid #334155;
+    border-radius:12px;
+    height:48px;
 }
 
-.stTextInput input:focus,
-.stTextArea textarea:focus,
-.stNumberInput input:focus{
-    border:1px solid #2563EB !important;
-    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+.stSelectbox div[data-baseweb="select"] > div{
+    background:#0F172A;
+    color:white;
+    border:1px solid #334155;
+    border-radius:12px;
 }
 
 label{
+    color:#E2E8F0 !important;
     font-weight:600 !important;
-    color:#334155 !important;
 }
+div.stButton > button{
+
+background:linear-gradient(
+90deg,
+#2563EB,
+#3B82F6
+);
+
+color:white;
+
+height:50px;
+
+border-radius:12px;
+
+font-size:18px;
+
+font-weight:bold;
+
+border:none;
+
+width:100%;
+
+transition:.3s;
+
+}
+
+div.stButton > button:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 8px 25px rgba(37,99,235,.45);
+
+}
+
 
 </style>
 """, unsafe_allow_html=True)
@@ -169,37 +221,51 @@ if not st.session_state.logged_in:
     <style>
 
     .loginbox{
-        max-width:650px;
-        margin:70px auto;
+        max-width:620px;
+
+        margin:auto;
+
+        margin-top:25px;
+
         padding:45px;
-        border-radius:28px;
-        background:rgba(255,255,255,0.65);
+
+        background:rgba(8,20,40,.78);
+
         backdrop-filter:blur(20px);
-        -webkit-backdrop-filter:blur(20px);
-        border:1px solid rgba(255,255,255,.35);
-        box-shadow:0 20px 50px rgba(0,0,0,.12);
+
+        border-radius:25px;
+
+        border:1px solid rgba(255,255,255,.15);
+
+        box-shadow:
+        0 15px 45px rgba(0,0,0,.55);
+
         text-align:center;
+
     }
     
     .loginbox h1{
-        font-size:44px;
+        font-size:48px;
+
         font-weight:800;
-        color:#0F172A;
-        margin-bottom:10px;
+
+        color:white;
+
+        letter-spacing:1px;
     }
     
     .loginbox h3{
-        font-size:22px;
-        font-weight:600;
-        color:#2563EB;
-        margin-bottom:15px;
+        color:#60A5FA;
+
+        font-size:24px;
+
+        margin-top:8px;
     }
     
     .loginbox p{
-        font-size:17px;
-        color:#475569;
-        line-height:1.6;
-        margin-bottom:8px;
+        color:#CBD5E1;
+
+        font-size:18px;
     }
 
 
