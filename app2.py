@@ -238,7 +238,7 @@ if not st.session_state.logged_in:
 
     .loginbox{
         width:430px;
-        margin:10px auto;
+        margin:10px auto !important;
         margin-top:0;
         padding:25px 30px;
         border-radius:28px;
@@ -279,7 +279,7 @@ if not st.session_state.logged_in:
     .login-subtitle{
         color:#CBD5E1;
 
-        font-size:34px;
+        font-size:64px;
         margin:0;
     }
 
