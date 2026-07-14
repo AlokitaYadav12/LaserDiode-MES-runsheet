@@ -239,16 +239,7 @@ if not st.session_state.logged_in:
     </style>
     """,unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="login-page">
-        <div class="loginbox">
-            ...
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-
+    
     st.markdown("""
     <div class="loginbox">
 
