@@ -62,45 +62,27 @@ h1,h2,h3{
 /* ---------- METRIC CARD ---------- */
 
 .metric-card{
-
-    background:white;
-
-    border-radius:18px;
-
-    padding:22px;
-
-    box-shadow:0 6px 18px rgba(0,0,0,.08);
-
-    transition:.25s;
-
+background:white;
+padding:24px;
+border-radius:18px;
+box-shadow:0px 10px 30px rgba(0,0,0,.08);
+transition:.3s;
 }
 
 .metric-card:hover{
-
-    transform:translateY(-4px);
-
+transform:translateY(-5px);
 }
 
 .metric-title{
-
-    color:#64748B;
-
-    font-size:16px;
-
-    font-weight:600;
-
+font-size:18px;
+color:#64748B;
 }
 
 .metric-value{
-
-    color:#0F172A;
-
-    font-size:36px;
-
-    font-weight:800;
-
-    margin-top:10px;
-
+font-size:40px;
+font-weight:800;
+color:#0F172A;
+margin-top:10px;
 }
 /* ---------- Premium Input Fields ---------- */
 
@@ -127,7 +109,11 @@ label{
     font-weight:600 !important;
     color:#334155 !important;
 }
-
+.stDataFrame{
+border-radius:18px;
+overflow:hidden;
+box-shadow:0px 8px 25px rgba(0,0,0,.08);
+}
 
 </style>
 """, unsafe_allow_html=True)
