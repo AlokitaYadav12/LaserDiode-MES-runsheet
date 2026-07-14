@@ -48,14 +48,23 @@ st.markdown("""
 /* ---------- APP ---------- */
 
 .stApp{
-    background:#F4F7FB;
+    background:
+    radial-gradient(circle at top left,#E0F2FE 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#DBEAFE 0%,transparent 35%),
+    linear-gradient(135deg,#F8FAFC,#EEF6FF,#F1F5F9);
+    background-attachment:fixed;
 }
 
 /* ---------- SIDEBAR ---------- */
 
 [data-testid="stSidebar"]{
-    background:#0F172A;
-    border-right:1px solid #1E293B;
+    background:linear-gradient(
+    180deg,
+    #0F172A,
+    #1E293B,
+    #334155
+    );
+    border-right:1px solid rgba(255,255,255,.08);
 }
 
 [data-testid="stSidebar"] *{
@@ -65,8 +74,8 @@ st.markdown("""
 /* ---------- HEADINGS ---------- */
 
 h1,h2,h3{
-    color:#0F172A;
-    font-weight:700;
+    color:#003366;
+    font-weight:bold;
 }
 
 /* ---------- INPUTS ---------- */
