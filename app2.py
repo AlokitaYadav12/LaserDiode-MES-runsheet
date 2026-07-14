@@ -196,8 +196,9 @@ if not st.session_state.logged_in:
     }
     
     .block-container{
-        padding-top:0.2rem;
-        padding-bottom:1rem;
+        padding-top:0rem !important;
+        padding-bottom:0rem !important;
+        max-width:100% !important;
     }
     </style>
     """,
@@ -207,8 +208,9 @@ if not st.session_state.logged_in:
 
     .stApp{
         background:
-        radial-gradient(circle at top,#2563EB 0%,transparent 35%),
-        linear-gradient(135deg,#0F172A,#111827,#1E293B);
+        radial-gradient(circle at top,#3B82F6 0%,transparent 22%),
+        radial-gradient(circle at bottom,#1D4ED8 0%,transparent 25%),
+        linear-gradient(180deg,#020617,#0F172A,#111827);
     }
 
     </style>
@@ -222,21 +224,19 @@ if not st.session_state.logged_in:
     <style>
 
     .loginbox{
-        width:420px;
-        margin:35px auto 20px;
-        margin-top:4vh;
+        width:430px;
+        margin:10px auto;
         padding:25px 30px;
-        border-radius:24px;
+        border-radius:28px;
 
-        background:rgba(25,35,55,0.78);
+        background:rgba(17,24,39,.70);
         backdrop-filter:blur(18px);
         -webkit-backdrop-filter:blur(18px);
 
-        border:1px solid rgba(255,255,255,.12);
+        border:1px solid rgba(255,255,255,.08);
 
         box-shadow:
-        0 25px 60px rgba(15,23,42,.12),
-        0 8px 20px rgba(37,99,235,.08);
+        0 40px 80px rgba(0,0,0,.45);
 
         text-align:center;
     }
@@ -297,8 +297,6 @@ if not st.session_state.logged_in:
 
     <h1> LASER DIODE MES </h1>
 
-    <h3>Manufacturing Execution System</h3>
-
     <p class="login-subtitle">
         🔐 Log in to continue
     </p>
@@ -311,6 +309,11 @@ if not st.session_state.logged_in:
    
 
     """,unsafe_allow_html=True)
+col1,col2,col3 = st.columns([1,2,1])
+
+with col2:
+
+    st.markdown(...loginbox...)    
     name = st.text_input("👤 Name")
 
     email = st.text_input("📧 Email Address")
