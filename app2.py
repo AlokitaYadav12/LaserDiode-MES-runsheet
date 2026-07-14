@@ -140,6 +140,19 @@ div[data-testid="stPlotlyChart"]{
     linear-gradient(135deg,#EEF6FF,#DCEEFF,#F8FAFC);
 
     border-radius:25px;
+
+    div[data-testid="stTextInput"] label,
+    div[data-testid="stSelectbox"] label{
+        color:#F8FAFC !important;
+        font-size:15px;
+        font-weight:600;
+    }
+
+    .stTextInput input,
+    .stSelectbox div[data-baseweb="select"] > div{
+        background:rgba(255,255,255,0.95) !important;
+        color:#111827 !important;
+    }
 }
 </style>
 """, unsafe_allow_html=True)
