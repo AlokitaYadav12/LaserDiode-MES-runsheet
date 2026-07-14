@@ -17,26 +17,6 @@ st.set_page_config(
     page_title="Laser Diode MES",
     layout="wide"
 )
-st.markdown("""
-<style>
-
-.block-container{
-    max-width:700px;
-    padding-top:1rem;
-    padding-bottom:0rem;
-    margin:auto;
-}
-
-header{
-visibility:hidden;
-}
-
-footer{
-visibility:hidden;
-}
-
-</style>
-""",unsafe_allow_html=True)
 
 # -------------------------
 # CUSTOM CSS
