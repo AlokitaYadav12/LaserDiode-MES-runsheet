@@ -117,8 +117,8 @@ box-shadow:0px 8px 25px rgba(0,0,0,.08);
 
 div[data-testid="stPlotlyChart"]{
     background:white;
-    border-radius:20px;
-    padding:15px;
+    border-radius:18px;
+    padding:10px;
     box-shadow:0px 8px 20px rgba(0,0,0,0.08);
     margin-top:15px;
 }
@@ -731,16 +731,24 @@ if page == "Dashboard":
              chart_data,
              values="Count",
              names="process_name",
-             title="Fabrication Process Distribution"
+             title="📊 Process Distribution"
          )
          st.plotly_chart(fig, use_container_width=True)
+        
          fig.update_layout(
          paper_bgcolor="white",
          plot_bgcolor="white",
          margin=dict(l=20, r=20, t=60, b=20),
          font=dict(size=14),
+         height=450,
+         legend=dict(
+         orientation="h",
+         y=-0.2,
+         x=0
          )
-
+         )
+     
+    st.markdown("<br>", unsafe_allow_html=True)
     st.subheader("🔍 Wafer Search")
 
     search = st.text_input("Enter Wafer ID")
