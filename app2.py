@@ -205,7 +205,7 @@ if not st.session_state.logged_in:
         width:420px;
         margin:auto;
         margin-top:4vh;
-        padding:35px 40px;
+        padding:25px 30px;
         border-radius:28px;
 
         background:rgba(255,255,255,0.65);
@@ -229,16 +229,16 @@ if not st.session_state.logged_in:
         color:#0F172A;
 
         letter-spacing:1px;
-        margin-bottom:6px;
+        margin-bottom:4px;
     }
     
     .loginbox h3{
         color:#2563EB;
 
-        font-size:21px;
+        font-size:20px;
         font-weight:600;
 
-        margin-bottom:14px;
+        margin-bottom:10px;
     }
     
     .login-subtitle{
@@ -255,7 +255,7 @@ if not st.session_state.logged_in:
     
     st.markdown("""
     <div class="loginbox">
-    <div style="font-size:28px;margin-bottom:10px;"></div>
+    <div style="font-size:28px;margin-bottom:8px;"></div>
     <h1> 🔬 LASER DIODE MES </h1>
 
     <h3>Manufacturing Execution System</h3>
