@@ -242,7 +242,7 @@ if not st.session_state.logged_in:
     
     st.markdown("""
     <div class="loginbox">
-    <div style="font-size:40px;margin-bottom:10px;"></div>
+    <div style="font-size:28px;margin-bottom:10px;"></div>
     <h1> 🔬 LASER DIODE MES </h1>
 
     <h3>Manufacturing Execution System</h3>
