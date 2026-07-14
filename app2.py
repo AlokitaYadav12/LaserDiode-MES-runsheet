@@ -725,19 +725,13 @@ if page == "Dashboard":
              names="process_name",
              title="Fabrication Process Distribution"
          )
-         st.markdown("""
-         <div style="
-         background:white;
-         padding:20px;
-         border-radius:20px;
-         box-shadow:0px 8px 25px rgba(0,0,0,.08);
-         margin-top:15px;
-         ">
-         """, unsafe_allow_html=True)
-
          st.plotly_chart(fig, use_container_width=True)
-
-         st.markdown("</div>", unsafe_allow_html=True)
+         fig.update_layout(
+         paper_bgcolor="white",
+         plot_bgcolor="white",
+         margin=dict(l=20, r=20, t=60, b=20),
+         font=dict(size=14),
+         )
 
     st.subheader("🔍 Wafer Search")
 
