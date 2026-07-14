@@ -278,7 +278,7 @@ if not st.session_state.logged_in:
     
     .login-subtitle{
         color:#FFFFFF;
-        font-size:22px;
+        font-size:38px;
         font-weight:700;
         letter-spacing:0.5px;
         margin-top:12px;
@@ -299,7 +299,7 @@ if not st.session_state.logged_in:
     <h1> 🔬 LASER DIODE MES </h1>
 
     <p class="login-subtitle">
-        🔐 Login
+        🔐 SIGN IN
     </p>
 
     </div>
