@@ -221,9 +221,9 @@ if not st.session_state.logged_in:
 
     .stApp{
         background:
-        radial-gradient(circle at top,#3B82F6 0%,transparent 22%),
-        radial-gradient(circle at bottom,#1D4ED8 0%,transparent 25%),
-        linear-gradient(180deg,#020617,#0F172A,#111827);
+        radial-gradient(circle at top,#BFDBFE 0%,transparent 35%),
+        radial-gradient(circle at bottom,#DBEAFE 0%,transparent 35%),
+        linear-gradient(135deg,#EAF4FF,#DDEBFF,#F8FAFC);
     }
 
     </style>
@@ -239,14 +239,15 @@ if not st.session_state.logged_in:
     .loginbox{
         width:430px;
         margin:10px auto;
+        margin-top:0;
         padding:25px 30px;
         border-radius:28px;
 
-        background:rgba(17,24,39,.70);
+        background:rgba(255,255,255,0.82);
         backdrop-filter:blur(18px);
         -webkit-backdrop-filter:blur(18px);
 
-        border:1px solid rgba(255,255,255,.08);
+        border:1px solid rgba(255,255,255,.6);
 
         box-shadow:
         0 40px 80px rgba(0,0,0,.45);
