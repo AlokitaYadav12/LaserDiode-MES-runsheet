@@ -279,7 +279,7 @@ if not st.session_state.logged_in:
     .login-subtitle{
         color:#CBD5E1;
 
-        font-size:24px;
+        font-size:34px;
         margin:0;
     }
 
