@@ -243,11 +243,11 @@ if not st.session_state.logged_in:
         padding:25px 30px;
         border-radius:28px;
 
-        background:rgba(255,255,255,0.82);
+        background:rgba(17,24,39,.70);
         backdrop-filter:blur(18px);
         -webkit-backdrop-filter:blur(18px);
 
-        border:1px solid rgba(255,255,255,.6);
+        border:1px solid rgba(255,255,255,.08);
 
         box-shadow:
         0 40px 80px rgba(0,0,0,.45);
@@ -279,7 +279,7 @@ if not st.session_state.logged_in:
     .login-subtitle{
         color:#CBD5E1;
 
-        font-size:17px;
+        font-size:24px;
         margin:0;
     }
 
@@ -296,7 +296,7 @@ if not st.session_state.logged_in:
     <h1> 🔬 LASER DIODE MES </h1>
 
     <p class="login-subtitle">
-        🔐 Log in to continue
+        🔐 Login
     </p>
 
     </div>
